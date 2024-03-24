@@ -1,0 +1,4 @@
+Downloaded image to: ..\picture\slider.jpg
+Downloaded image to: ..\picture\background.jpg
+当前滑块的缺口位置： (483, 31, 619, 167)
+扩容后的差分账号数量为： 7221 

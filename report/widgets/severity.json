@@ -1,0 +1,11 @@
+[ {
+  "uid" : "f69475db8ac4f43f",
+  "name" : "谷歌测试浏览器---实例列表扩容差分账号,扩容成功",
+  "time" : {
+    "start" : 1711289835908,
+    "stop" : 1711289876528,
+    "duration" : 40620
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Mar 24 22:17:15 CST 2024","Sun Mar 24 22:17:56 CST 2024","40620","testcases.client","test_client_expand_server_number","","","","谷歌测试浏览器---实例列表扩容差分账号,扩容成功",""

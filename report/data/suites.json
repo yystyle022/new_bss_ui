@@ -1,0 +1,26 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "testcases.client",
+    "children" : [ {
+      "name" : "test_client_expand_server_number",
+      "children" : [ {
+        "name" : "谷歌测试浏览器---实例列表扩容差分账号,扩容成功",
+        "uid" : "f69475db8ac4f43f",
+        "parentUid" : "10cb2032c709e9b609f28e043f7a67dd",
+        "status" : "passed",
+        "time" : {
+          "start" : 1711289835908,
+          "stop" : 1711289876528,
+          "duration" : 40620
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "10cb2032c709e9b609f28e043f7a67dd"
+    } ],
+    "uid" : "9429b6945e45abd6cf8e0a4f419354a7"
+  } ]
+}

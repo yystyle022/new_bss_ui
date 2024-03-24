@@ -1,0 +1,26 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "DESKTOP-FN6G9LE",
+    "children" : [ {
+      "name" : "6500-MainThread",
+      "children" : [ {
+        "name" : "谷歌测试浏览器---实例列表扩容差分账号,扩容成功",
+        "uid" : "f69475db8ac4f43f",
+        "parentUid" : "db66b6f539f7a5afd3359d27cccdc64a",
+        "status" : "passed",
+        "time" : {
+          "start" : 1711289835908,
+          "stop" : 1711289876528,
+          "duration" : 40620
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "db66b6f539f7a5afd3359d27cccdc64a"
+    } ],
+    "uid" : "1475b136adf9a86d69f6691ddea74a53"
+  } ]
+}

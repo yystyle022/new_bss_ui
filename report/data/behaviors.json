@@ -1,0 +1,22 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "扩容差分账号测试用例",
+    "children" : [ {
+      "name" : "谷歌测试浏览器---实例列表扩容差分账号,扩容成功",
+      "uid" : "f69475db8ac4f43f",
+      "parentUid" : "24eea168e5d0df05e2c4e9d1f42f77af",
+      "status" : "passed",
+      "time" : {
+        "start" : 1711289835908,
+        "stop" : 1711289876528,
+        "duration" : 40620
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "24eea168e5d0df05e2c4e9d1f42f77af"
+  } ]
+}
