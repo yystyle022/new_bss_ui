@@ -1,4 +1,7 @@
 class ClientConsoleBase():
+    '''
+    控制台概览页面
+    '''
 
     def buyNumCmXpath(self):
         '''

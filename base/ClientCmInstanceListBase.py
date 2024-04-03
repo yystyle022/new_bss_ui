@@ -3,19 +3,74 @@
 # @Author : yangyang
 # @File : bss-ui/ClientCmInstanceListBase.py
 class ClientCmInstanceList:
+    '''
+    厘米级服务实例页面
+    '''
 
-    def listExpandButtonXpath(self, instance):
+    def InstanceIdInputXpath(self):
         '''
-        返回实例列表展开按钮的Xpath
+        查询条件-实例输入框
+        @return:
+        '''
+        return "//input[@placeholder='请输入']"
+
+    def ProductNameSelectXpath(self):
+        '''
+        查询条件-产品名称选择框
+        @return:
+        '''
+        return "//div[@title='厘清/Locate-CM']"
+
+    def ProductNameSelectLiQingXpath(self):
+        '''
+        查询条件-产品名称选项-厘清
+        @return:
+        '''
+        return "//li[text()=' 厘清/Locate-CM ']"
+
+    def ProductNameSelectOrionXpath(self):
+        '''
+        查询条件-产品名称选择-星璨
+        @return:
+        '''
+        return "//li[text()=' 星璨/Orion ']"
+
+    def QueryButtonXpath(self):
+        '''
+        查询按钮
+        @return:
+        '''
+        return "//span[text()='查 询']"
+
+    def listExpandButtonXpath(self, InstanceId):
+        '''
+        实例列表-实例展开按钮
         @param instance:
         @return:
         '''
-        return "//td[text()='{}']/..//span[@class='expand-icon']".format(instance)
+        return f"//td[text()='{InstanceId}']/..//span[@class='expand-icon']"
 
-    def listAsXpath(self, instance):
+    def ServiceModeXpath(self,InstanceId):
         '''
-        返回列表实例AS的Xpath
+        实例列表-实例服务模式
+        @param InstanceId:
+        @return:
+        '''
+        return f""
+
+
+    def InstanceIdXpath(self, InstanceId):
+        '''
+        实例列表-实例ID
+        @param InstanceId:
+        @return:
+        '''
+        return f"//td[text()='{InstanceId}']"
+
+    def listAsXpath(self, InstanceId):
+        '''
+        实例列表-实例AS
         @param instance:
         @return:
         '''
-        return "//td[text()='{}']/../following-sibling::tr[1]//span[contains(text(),'AppSecret')]/following-sibling::span".format(instance)
+        return f"//td[text()='{InstanceId}']/../following-sibling::tr[1]//span[contains(text(),'AppSecret')]/following-sibling::span"

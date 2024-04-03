@@ -1,4 +1,3 @@
-import allure
 from common.playwrightFunction import *
 from base.ClientHomeBase import ClientHomeBase
 from base.ClientLoginBase import ClientLoginBase
