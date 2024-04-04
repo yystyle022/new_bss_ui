@@ -9,7 +9,7 @@ class ClientCmInstanceList:
 
     def InstanceIdInputXpath(self):
         '''
-        查询条件-实例输入框
+        查询条件-实例Id输入框
         @return:
         '''
         return "//input[@placeholder='请输入']"
@@ -50,14 +50,13 @@ class ClientCmInstanceList:
         '''
         return f"//td[text()='{InstanceId}']/..//span[@class='expand-icon']"
 
-    def ServiceModeXpath(self,InstanceId):
+    def ServiceModeXpath(self, InstanceId):
         '''
         实例列表-实例服务模式
         @param InstanceId:
         @return:
         '''
-        return f""
-
+        return f"//td[text()='{InstanceId}']/../td[2]/span"
 
     def InstanceIdXpath(self, InstanceId):
         '''
@@ -66,6 +65,21 @@ class ClientCmInstanceList:
         @return:
         '''
         return f"//td[text()='{InstanceId}']"
+
+    def InstanceFormalAccountNumberSumsXpath(self, InstanceId):
+        '''
+        实例列表-实例下正式账号数量
+        @param InstanceId:
+        @return:
+        '''
+        return f"//td[text()='{InstanceId}']/following-sibling::td[7]"
+
+    def InstanceExpandAccountNumberButtonXpath(self, InstanceId):
+        '''
+        实例列表-实例下扩容账号按钮
+        @return:
+        '''
+        return f"//td[text()='{InstanceId}']/..//a[text()='扩容']"
 
     def listAsXpath(self, InstanceId):
         '''

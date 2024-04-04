@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time : 2023/3/27 21:12
-# @Author : yangyang
-# @File : 2222/conftest.py
-
 import yaml
 import pytest
 from common.playwrightFunction import *
@@ -41,7 +36,7 @@ def chrome_client_login():
             page.fill(ClientLoginBase().loginInputXpath('请输入账号或手机号码'), clientUsername)
             page.fill(ClientLoginBase().loginInputXpath('请输入密码'), clientPassword)
             page.click(ClientLoginBase().submitButtonXpath())
-            sleep(1)
+            sleep(5)
             while True:
                 frame_xpath = ClientLoginBase().sliderVerificationIframeXpath()
                 download_images(page, image_name="slider", frame_xpath=frame_xpath, image_xpath=ClientLoginBase().sliderPicXpath(), save_directory=save_directory)
@@ -86,7 +81,7 @@ def chromium_client_login():
             page.fill(ClientLoginBase().loginInputXpath('请输入账号或手机号码'), clientUsername)
             page.fill(ClientLoginBase().loginInputXpath('请输入密码'), clientPassword)
             page.click(ClientLoginBase().submitButtonXpath())
-            sleep(1)
+            sleep(5)
             while True:
                 frame_xpath = ClientLoginBase().sliderVerificationIframeXpath()
                 download_images(page, image_name="slider", frame_xpath=frame_xpath, image_xpath=ClientLoginBase().sliderPicXpath(), save_directory=save_directory)
@@ -131,7 +126,7 @@ def edge_client_login():
             page.fill(ClientLoginBase().loginInputXpath('请输入账号或手机号码'), clientUsername)
             page.fill(ClientLoginBase().loginInputXpath('请输入密码'), clientPassword)
             page.click(ClientLoginBase().submitButtonXpath())
-            sleep(1)
+            sleep(5)
             while True:
                 frame_xpath = ClientLoginBase().sliderVerificationIframeXpath()
                 download_images(page, image_name="slider", frame_xpath=frame_xpath, image_xpath=ClientLoginBase().sliderPicXpath(), save_directory=save_directory)
