@@ -17,6 +17,10 @@ class ClientHomeBase:
     def registerButtonXpath(self):
         return "//a[contains(text(),'注册')]"
 
+    # 首页右上角控制台按钮
+    def consoleXpath(self):
+        return "//a[contains(text(),'控制台')]"
+
     # 首页厘清标题
     def liqingHomePageTitleXpath(self):
         return "//h5[text()='厘清/Locate-CM']"
@@ -25,6 +29,10 @@ class ClientHomeBase:
     def liqingHomePagePurchaseButtonXpath(self):
         return "//h5[text()='厘清/Locate-CM']/..//span[text()='立即购买']"
 
-    # 首页右上角控制台按钮
-    def consoleXpath(self):
-        return "//a[contains(text(),'控制台')]"
+    # 首页分明标题
+    def fenmingHomePageTitleXpath(self):
+        return "//h5[text()='分明/Locate-DM']"
+
+    # 首页分明立即购买按钮
+    def fenmingHomePagePurchaseButtonXpath(self):
+        return "//h5[text()='分明/Locate-DM']/..//span[text()='立即购买']"

@@ -1,94 +1,176 @@
-# -*- coding=utf-8 -*-
-# @Time : 2023/9/19 15:46
-# @Author : yangyang
-# @File : bss-ui/test_client_purchase_server_number.py
-
-import allure
-import pytest
-from time import sleep
-from base.ClientHomeBase import HomeBase
-from playwright.sync_api import sync_playwright
-from base.ClientConsoleBase import ClientConsoleBase
-from base.ClientLiQingDetailsBase import ClientLiQingDetailsBase
-from common.playwrightFunction import client_login, write_log_to_allure, screenshot_to_allure, assert_element_exist, purchase_server_number
+from page.ClientHomePage import *
+from page.ClientSubmitOrderPage import *
+from page.ClientPaymentOrderPage import *
+from page.ClientProductDetailPage import *
+from common.allure_function import write_log_to_allure_report
 
 
 @allure.feature('购买差分账号测试用例')
-@allure.title('官网首页购买手动激活、手动绑定方式的厘清账号')
-def test_fontpage_purchase_liqing_manualactive_manualbind(chrome_browser):
-    page = chrome_browser
-    client_login(page)
-    with allure.step('点击首页厘清购买按钮，进入厘清页面'):
-        page.click(HomeBase().liqingHomePageTitleXpath())
-        write_log_to_allure('鼠标移动到厘清icon上，点击后展示出厘清购买按钮')
-        screenshot_to_allure(page, '鼠标移动到厘清icon上，点击后展示出厘清购买按钮')
-        sleep(0.5)
-        page.click(HomeBase().liqingHomePagePurchaseButtonXpath())
-        write_log_to_allure('点击购买按钮进入详情厘清详情页面')
-        screenshot_to_allure(page, '点击购买按钮进入详情厘清详情页面')
+@allure.title('官网首页购买1天、自动激活、自动绑定方式的厘清账号')
+def test_home_page_purchase_one_day_liqing_auto_active_auto_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
 
-    with allure.step('验证是否进入厘清详情页面'):
-        assert_element_exist(page, ClientLiQingDetailsBase().manualActiveMethodXpath())
-        write_log_to_allure('验证是否进入厘清详情页面，查看页面是否存在手动激活元素，手动激活元素存在，页面进入成功')
-        screenshot_to_allure(page, '验证是否进入厘清详情页面')
+    with allure.step('点击首页厘清购买按钮，进入厘清详情页面'):
+        click_purchase_button(chromium_client_login)
 
-    purchase_server_number(page, active=2, bind=2, duration=2, sums="1")
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)
 
 
 @allure.feature('购买差分账号测试用例')
-@allure.title('官网首页购买自动激活、自动绑定方式的厘清账号')
-@pytest.mark.regression
-def test_fontpage_purchase_liqing_autoactive_autobind(chrome_browser):
-    page = chrome_browser
-    client_login(page)
-    with allure.step('点击首页厘清购买按钮，进入厘清页面'):
-        page.click(HomeBase().liqingHomePageTitleXpath())
-        write_log_to_allure('鼠标移动到厘清icon上，点击后展示出厘清购买按钮')
-        screenshot_to_allure(page, '鼠标移动到厘清icon上，点击后展示出厘清购买按钮')
-        sleep(0.5)
-        page.click(HomeBase().liqingHomePagePurchaseButtonXpath())
-        write_log_to_allure('点击购买按钮进入详情厘清详情页面')
-        screenshot_to_allure(page, '点击购买按钮进入详情厘清详情页面')
+@allure.title('官网首页购买1个月、自动激活、自动绑定方式的厘清账号')
+def test_home_page_purchase_one_month_liqing_auto_active_auto_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
 
-    with allure.step('验证是否进入厘清详情页面'):
-        assert_element_exist(page, ClientLiQingDetailsBase().manualActiveMethodXpath())
-        write_log_to_allure('验证是否进入厘清详情页面，查看页面是否存在手动激活元素，手动激活元素存在，页面进入成功')
-        screenshot_to_allure(page, '验证是否进入厘清详情页面')
+    with allure.step('点击首页厘清购买按钮，进入厘清详情页面'):
+        click_purchase_button(chromium_client_login)
 
-    purchase_server_number(page, duration=1, sums="1")
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login, duration=2)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)
 
 
 @allure.feature('购买差分账号测试用例')
-@allure.title('控制台购买手动激活、手动绑定方式的厘清账号')
-def test_console_purchase_liqing_manualactive_manualbind(chrome_browser):
-    page = chrome_browser
-    client_login(page)
-    with allure.step('点击首页左上角控制台按钮，进入控制台页面'):
-        page.click(HomeBase().consoleXpath())
-        write_log_to_allure('点击首页左上角控制台按钮，进入控制台页面')
-        screenshot_to_allure(page, '进入控制台页面成功')
+@allure.title('官网首页购买1年、自动激活、自动绑定方式的厘清账号')
+def test_home_page_purchase_one_year_liqing_auto_active_auto_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
 
-    with allure.step('点击厘米级购买账号按钮，进入厘清详情页面'):
-        page.click(ClientConsoleBase().purchaseCmAccountButtonXpath())
-        write_log_to_allure('点击厘米级购买账号按钮，进入厘清详情页面')
-        screenshot_to_allure(page, '进入厘清详情页面成功')
+    with allure.step('点击首页厘清购买按钮，进入厘清详情页面'):
+        click_purchase_button(chromium_client_login)
 
-    purchase_server_number(page, active=2, bind=2, duration=2, sums="1")
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login, duration=3)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)
 
 
 @allure.feature('购买差分账号测试用例')
-@allure.title('控制台购买自动激活、自动绑定方式的厘清账号')
-def test_console_purchase_liqing_autoactive_autobind(chrome_browser):
-    page = chrome_browser
-    client_login(page)
-    with allure.step('点击首页左上角控制台按钮，进入控制台页面'):
-        page.click(HomeBase().consoleXpath())
-        write_log_to_allure('点击首页左上角控制台按钮，进入控制台页面')
-        screenshot_to_allure(page, '进入控制台页面成功')
+@allure.title('官网首页购买1000个、1月、自动激活、自动绑定方式的厘清账号')
+def test_home_page_purchase_1000_one_month_liqing_auto_active_auto_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
 
-    with allure.step('点击厘米级购买账号按钮，进入厘清详情页面'):
-        page.click(ClientConsoleBase().purchaseCmAccountButtonXpath())
-        write_log_to_allure('点击厘米级购买账号按钮，进入厘清详情页面')
-        screenshot_to_allure(page, '进入厘清详情页面成功')
+    with allure.step('点击首页厘清购买按钮，进入厘清详情页面'):
+        click_purchase_button(chromium_client_login)
 
-    purchase_server_number(page, duration=2, sums="1")
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login, duration=2, purchaseQuantity=1000)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)
+
+
+@allure.feature('购买差分账号测试用例')
+@allure.title('官网首页购买100个、1月、自动激活、手动绑定方式的厘清账号')
+def test_home_page_purchase_100_one_month_liqing_auto_active_manual_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
+
+    with allure.step('点击首页厘清购买按钮，进入厘清详情页面'):
+        click_purchase_button(chromium_client_login)
+
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login, duration=2, bindMethod=2, purchaseQuantity=100)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)
+
+
+@allure.feature('购买差分账号测试用例')
+@allure.title('官网首页购买10个、1月、手动激活、自动绑定方式的厘清账号')
+def test_home_page_purchase_10_one_month_liqing_manual_active_auto_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
+
+    with allure.step('点击首页厘清购买按钮，进入厘清详情页面'):
+        click_purchase_button(chromium_client_login)
+
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login, duration=2, activeMethod=2, purchaseQuantity=10)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)
+
+
+@allure.feature('购买差分账号测试用例')
+@allure.title('官网首页购买10个、1月、手动激活、手动绑定方式的厘清账号')
+def test_home_page_purchase_10_one_month_liqing_manual_active_manual_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
+
+    with allure.step('点击首页厘清购买按钮，进入厘清详情页面'):
+        click_purchase_button(chromium_client_login)
+
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login, duration=2, activeMethod=2, bindMethod=2, purchaseQuantity=10)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)
+
+
+@allure.feature('购买差分账号测试用例')
+@allure.title('官网首页购买10个、1天、自动激活、自动绑定方式的分明账号')
+def test_home_page_purchase_10_one_day_fenming_auto_active_auto_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
+
+    with allure.step('点击首页分明购买按钮，进入分明详情页面'):
+        click_purchase_button(chromium_client_login, product=2)
+
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login, purchaseQuantity=10)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)
+
+
+@allure.feature('购买差分账号测试用例')
+@allure.title('官网首页购买100个、1月、自动激活、自动绑定方式的分明账号')
+def test_home_page_purchase_100_one_month_fenming_auto_active_auto_bind_server_number(chromium_client_login):
+    with allure.step('登录成功，进入首页'):
+        write_log_to_allure_report(chromium_client_login, '登录成功，进入首页')
+
+    with allure.step('点击首页分明购买按钮，进入分明详情页面'):
+        click_purchase_button(chromium_client_login, product=2)
+
+    with allure.step('购买账号'):
+        purchase_server_number(chromium_client_login, purchaseQuantity=100)
+
+    with allure.step('提交订单'):
+        click_submit_order_button(chromium_client_login)
+
+    with allure.step('确认支付'):
+        click_pay_order_button(chromium_client_login)

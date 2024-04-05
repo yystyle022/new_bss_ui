@@ -36,7 +36,7 @@ def chrome_client_login():
             page.fill(ClientLoginBase().loginInputXpath('请输入账号或手机号码'), clientUsername)
             page.fill(ClientLoginBase().loginInputXpath('请输入密码'), clientPassword)
             page.click(ClientLoginBase().submitButtonXpath())
-            sleep(5)
+            sleep(2)
             while True:
                 frame_xpath = ClientLoginBase().sliderVerificationIframeXpath()
                 download_images(page, image_name="slider", frame_xpath=frame_xpath, image_xpath=ClientLoginBase().sliderPicXpath(), save_directory=save_directory)
@@ -81,7 +81,7 @@ def chromium_client_login():
             page.fill(ClientLoginBase().loginInputXpath('请输入账号或手机号码'), clientUsername)
             page.fill(ClientLoginBase().loginInputXpath('请输入密码'), clientPassword)
             page.click(ClientLoginBase().submitButtonXpath())
-            sleep(5)
+            sleep(1)
             while True:
                 frame_xpath = ClientLoginBase().sliderVerificationIframeXpath()
                 download_images(page, image_name="slider", frame_xpath=frame_xpath, image_xpath=ClientLoginBase().sliderPicXpath(), save_directory=save_directory)
@@ -113,7 +113,7 @@ def chromium_client_login():
 def edge_client_login():
     ss_file = 'login_data.json'
     with sync_playwright() as p:
-        browser = p.chromium.launch(channel="msedge", headless=True, args=["--start-maximized"])
+        browser = p.chromium.launch(channel="msedge", headless=get_headless(), args=["--start-maximized"])
         if os.path.isfile(ss_file):
             context = browser.new_context(storage_state=ss_file, no_viewport=True)
         else:
@@ -126,7 +126,7 @@ def edge_client_login():
             page.fill(ClientLoginBase().loginInputXpath('请输入账号或手机号码'), clientUsername)
             page.fill(ClientLoginBase().loginInputXpath('请输入密码'), clientPassword)
             page.click(ClientLoginBase().submitButtonXpath())
-            sleep(5)
+            sleep(2)
             while True:
                 frame_xpath = ClientLoginBase().sliderVerificationIframeXpath()
                 download_images(page, image_name="slider", frame_xpath=frame_xpath, image_xpath=ClientLoginBase().sliderPicXpath(), save_directory=save_directory)

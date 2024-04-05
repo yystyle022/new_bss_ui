@@ -1,8 +1,8 @@
 # -*- coding=utf-8 -*-
 # @Time : 2023/9/11 10:38
 # @Author : yangyang
-# @File : bss-ui/ClientLiQingDetailsBase.py
-class ClientLiQingDetailsBase:
+# @File : bss-ui/ClientProductDetailsBase.py
+class ClientProductDetailsBase:
     '''
     厘清详情页面Xpath
     '''
@@ -76,24 +76,3 @@ class ClientLiQingDetailsBase:
         @return:
         '''
         return "//div[text()='应付总额：']/following-sibling::div"
-
-    def submitOrderButtonXpath(self):
-        '''
-        提交订单按钮Xpath
-        @return:
-        '''
-        return "//button"
-
-    def confirmPaymentButtonXpath(self):
-        '''
-        确认支付按钮
-        @return:
-        '''
-        return "//button"
-
-    def paySuccessIdentificationXpath(self):
-        '''
-        支付成功标识Xpath
-        @return:
-        '''
-        return "//div[text()='订单支付成功']"

@@ -2,7 +2,7 @@
 # @Time : 2023/5/5 9:27
 # @Author : yangyang
 # @File : bss-ui/ClientCmInstanceListBase.py
-class ClientCmInstanceList:
+class ClientInstanceList:
     '''
     厘米级服务实例页面
     '''
@@ -42,7 +42,21 @@ class ClientCmInstanceList:
         '''
         return "//span[text()='查 询']"
 
-    def listExpandButtonXpath(self, InstanceId):
+    def CmListTitleXpath(self):
+        '''
+        厘米级实例列表标题
+        @return:
+        '''
+        return "//div[text()='厘米级实例列表']"
+
+    def DmListTitleXpath(self):
+        '''
+        亚米级实例列表标题
+        @return:
+        '''
+        return "//div[text()='亚米级实例列表']"
+
+    def ListExpandButtonXpath(self, InstanceId):
         '''
         实例列表-实例展开按钮
         @param instance:
@@ -72,7 +86,7 @@ class ClientCmInstanceList:
         @param InstanceId:
         @return:
         '''
-        return f"//td[text()='{InstanceId}']/following-sibling::td[7]"
+        return f"//td[text()='{InstanceId}']/following-sibling::td[7]/a"
 
     def InstanceExpandAccountNumberButtonXpath(self, InstanceId):
         '''
@@ -81,7 +95,7 @@ class ClientCmInstanceList:
         '''
         return f"//td[text()='{InstanceId}']/..//a[text()='扩容']"
 
-    def listAsXpath(self, InstanceId):
+    def ListAsXpath(self, InstanceId):
         '''
         实例列表-实例AS
         @param instance:
