@@ -1,4 +1,5 @@
 from time import sleep
+from base.ClientHomeBase import ClientHomeBase
 from base.ClientConsoleBase import ClientConsoleBase
 from base.ClientCmInstanceListBase import ClientInstanceList
 from common.allure_function import write_log_to_allure_report
@@ -10,6 +11,7 @@ host = "https://bss-user-uat.sixents.com"
 # host = "https://www.sixents.com"
 
 # PageUrl
+HomePage = f"{host}"
 # 控制台概览页面
 ConsoleOverviewPageUrl = f"{host}/home/index"
 # 厘米级服务概览页面
@@ -70,3 +72,17 @@ def go_to_dm_service_instance_page(page):
         write_log_to_allure_report(page, '进入亚米级服务实例页面成功')
     except Exception as error:
         write_log_to_allure_report(page, f'进入亚米级服务实例页面失败：{error}')
+
+
+def go_to_home_page_no_login(page):
+    '''
+    去往首页，未登录
+    @param page:
+    @return:
+    '''
+    page.goto(HomePage)
+    try:
+        assert page.wait_for_selector(ClientHomeBase().registerButtonXpath(), timeout=5000), '进入首页失败'
+        write_log_to_allure_report(page, '进入首页成功')
+    except Exception as error:
+        write_log_to_allure_report(page, f'进入首页失败：{error}')

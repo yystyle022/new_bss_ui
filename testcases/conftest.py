@@ -20,6 +20,54 @@ def get_headless():
 
 
 @pytest.fixture()
+def chrome():
+    '''
+    返回chrome浏览器
+    @return:
+    '''
+    with sync_playwright() as p:
+        browser = p.chromium.launch(channel="chrome", headless=get_headless(), args=["--start-maximized"])
+        context = browser.new_context(no_viewport=True)
+        page = context.new_page()
+        yield page
+        context.close()
+        browser.close()
+        p.stop()
+
+
+@pytest.fixture()
+def chromium():
+    '''
+    返回chrome测试浏览器
+    @return:
+    '''
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=get_headless(), args=["--start-maximized"])
+        context = browser.new_context(no_viewport=True)
+        page = context.new_page()
+        yield page
+        context.close()
+        browser.close()
+        p.stop()
+
+
+@pytest.fixture()
+def edge():
+    '''
+    返回chrome浏览器
+    @return:
+    '''
+    with sync_playwright() as p:
+        browser = p.chromium.launch(channel="msedge", headless=get_headless(), args=["--start-maximized"])
+        context = browser.new_context(no_viewport=True)
+        page = context.new_page()
+        yield page
+        context.close()
+        browser.close()
+        p.stop()
+
+
+@pytest.fixture()
 def chrome_client_login():
     ss_file = 'login_data.json'
     with sync_playwright() as p:

@@ -31,6 +31,7 @@ def purchase_server_number(page, duration=1, activeMethod=1, bindMethod=1, purch
             write_log_to_allure_report(page, "选择绑定方式为自动绑定")
         elif bindMethod == 2:
             page.click(ClientProductDetailsBase().manualBindMethodXpath())
+            write_log_to_allure_report(page, "选择绑定方式为手动绑定")
 
     with allure.step('填写购买数量'):
         page.fill(ClientProductDetailsBase().purchaseSumXpath(), f'{purchaseQuantity}')
