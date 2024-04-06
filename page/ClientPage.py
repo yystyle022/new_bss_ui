@@ -1,6 +1,7 @@
 from time import sleep
 from base.ClientHomeBase import ClientHomeBase
 from base.ClientConsoleBase import ClientConsoleBase
+from base.ClientRegisterBase import ClientRegisterBase
 from base.ClientCmInstanceListBase import ClientInstanceList
 from common.allure_function import write_log_to_allure_report
 
@@ -30,6 +31,8 @@ DmServiceInstancePageUrl = f"{host}/server/dm/example/index"
 DmServiceFormalAccountNumberPageUrl = f"{host}/server/dm/officialAccount/index"
 # 亚米级服务试用账号页面
 DmServiceTryAccountNumberPageUrl = f"{host}/server/dm/trialAccount/index"
+# 账号注册页面
+AccountRegisterPageUrl = f"{host}/user/register"
 
 
 def go_to_console_overview_page(page):
@@ -86,3 +89,13 @@ def go_to_home_page_no_login(page):
         write_log_to_allure_report(page, '进入首页成功')
     except Exception as error:
         write_log_to_allure_report(page, f'进入首页失败：{error}')
+
+
+def go_to_account_register_page(page):
+    '''
+    去往账号注册页面
+    @param page:
+    @return:
+    '''
+    page.goto(AccountRegisterPageUrl)
+    write_log_to_allure_report(page, '去往账号注册页面')

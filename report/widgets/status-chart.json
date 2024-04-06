@@ -1,10 +1,50 @@
 [ {
-  "uid" : "f69475db8ac4f43f",
-  "name" : "谷歌测试浏览器---实例列表扩容差分账号,扩容成功",
+  "uid" : "ed2b6743eb23c3f4",
+  "name" : "输入字母，提示:手机号不正确",
   "time" : {
-    "start" : 1711289835908,
-    "stop" : 1711289876528,
-    "duration" : 40620
+    "start" : 1712407609400,
+    "stop" : 1712407617383,
+    "duration" : 7983
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "90425db6a809071e",
+  "name" : "输入11位数字，提示:手机号不正确",
+  "time" : {
+    "start" : 1712407627369,
+    "stop" : 1712407635686,
+    "duration" : 8317
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a4f4a539271a2eb5",
+  "name" : "输入为空，提示:手机号不正确",
+  "time" : {
+    "start" : 1712407636562,
+    "stop" : 1712407646498,
+    "duration" : 9936
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d6ca251f9677939e",
+  "name" : "点击首页注册按钮，正常跳转至注册页面",
+  "time" : {
+    "start" : 1712407600587,
+    "stop" : 1712407608494,
+    "duration" : 7907
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "be767ebee04c10d5",
+  "name" : "输入10位数字，提示:手机号不正确",
+  "time" : {
+    "start" : 1712407618302,
+    "stop" : 1712407626417,
+    "duration" : 8115
   },
   "status" : "passed",
   "severity" : "normal"

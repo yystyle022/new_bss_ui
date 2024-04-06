@@ -1,8 +1,19 @@
 {
-  "total" : 1,
+  "total" : 2,
   "items" : [ {
-    "uid" : "24eea168e5d0df05e2c4e9d1f42f77af",
-    "name" : "扩容差分账号测试用例",
+    "uid" : "9b7e26ef01ede29ab0940542eb2d9776",
+    "name" : "手机号验证",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 4,
+      "unknown" : 0,
+      "total" : 4
+    }
+  }, {
+    "uid" : "fe30dada0edceef98048692fa64199e2",
+    "name" : "首页注册跳转",
     "statistic" : {
       "failed" : 0,
       "broken" : 0,

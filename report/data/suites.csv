@@ -1,2 +1,26 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sun Mar 24 22:17:15 CST 2024","Sun Mar 24 22:17:56 CST 2024","40620","testcases.client","test_client_expand_server_number","","","","谷歌测试浏览器---实例列表扩容差分账号,扩容成功",""
+"passed","Sat Apr 06 20:46:49 CST 2024","Sat Apr 06 20:46:57 CST 2024","7983","testcases.client","test_client_register","","","","输入字母，提示:手机号不正确","
+    测试手机号输入字母，提示:手机号不正确
+    @param chrome:
+    @return:
+    "
+"passed","Sat Apr 06 20:47:07 CST 2024","Sat Apr 06 20:47:15 CST 2024","8317","testcases.client","test_client_register","","","","输入11位数字，提示:手机号不正确","
+    测试手机号输入字母，提示:手机号不正确
+    @param chrome:
+    @return:
+    "
+"passed","Sat Apr 06 20:47:16 CST 2024","Sat Apr 06 20:47:26 CST 2024","9936","testcases.client","test_client_register","","","","输入为空，提示:手机号不正确","
+    测试手机号输入字母，提示:手机号不正确
+    @param chrome:
+    @return:
+    "
+"passed","Sat Apr 06 20:46:40 CST 2024","Sat Apr 06 20:46:48 CST 2024","7907","testcases.client","test_client_register","","","","点击首页注册按钮，正常跳转至注册页面","
+    测试点击首页注册按钮，成功跳转到注册页面
+    @param chrome:
+    @return:
+    "
+"passed","Sat Apr 06 20:46:58 CST 2024","Sat Apr 06 20:47:06 CST 2024","8115","testcases.client","test_client_register","","","","输入10位数字，提示:手机号不正确","
+    测试手机号输入字母，提示:手机号不正确
+    @param chrome:
+    @return:
+    "
