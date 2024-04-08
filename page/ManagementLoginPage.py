@@ -7,6 +7,7 @@
 from base.ManagementLoginBase import *
 from common.playwrightFunction import *
 from common.allure_function import write_log_to_allure_report
+from base.ManagementLeftNavicationBar import ManagementLeftNavicationBar
 
 
 def input_account_number(page, phoneNumber=managementUsername):
@@ -39,3 +40,16 @@ def click_login_button(page):
     '''
     page.click(ManagementLoginBase().LoginButtonXpath())
     write_log_to_allure_report(page, "点击登录按钮")
+
+
+def assert_login_success(page):
+    '''
+    断言登录成功
+    @param page:
+    @return:
+    '''
+    try:
+        assert page.wait_for_selector(ManagementLeftNavicationBar().serviceProductManagementXpath(), timeout=5000), '登录失败'
+        write_log_to_allure_report(page, '登录成功')
+    except Exception as error:
+        write_log_to_allure_report(page, f'登录失败：{error}')

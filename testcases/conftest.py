@@ -1,9 +1,10 @@
 import yaml
 import pytest
-from common.playwrightFunction import *
+from page.ManagementLoginPage import *
 from playwright.sync_api import sync_playwright
 from base.ClientHomeBase import ClientHomeBase
 from base.ClientLoginBase import ClientLoginBase
+from page.ManagementPage import go_to_login_page
 
 current_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 save_directory = os.path.join('..', 'picture')
@@ -17,54 +18,6 @@ def get_headless():
     with open(current_path + r'\config\environment.yaml') as f:
         environment = yaml.load(f.read(), Loader=yaml.FullLoader)
         return environment['headless']
-
-
-@pytest.fixture()
-def chrome():
-    '''
-    返回chrome浏览器
-    @return:
-    '''
-    with sync_playwright() as p:
-        browser = p.chromium.launch(channel="chrome", headless=get_headless(), args=["--start-maximized"])
-        context = browser.new_context(no_viewport=True)
-        page = context.new_page()
-        yield page
-        context.close()
-        browser.close()
-        p.stop()
-
-
-@pytest.fixture()
-def chromium():
-    '''
-    返回chrome测试浏览器
-    @return:
-    '''
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=get_headless(), args=["--start-maximized"])
-        context = browser.new_context(no_viewport=True)
-        page = context.new_page()
-        yield page
-        context.close()
-        browser.close()
-        p.stop()
-
-
-@pytest.fixture()
-def edge():
-    '''
-    返回chrome浏览器
-    @return:
-    '''
-    with sync_playwright() as p:
-        browser = p.chromium.launch(channel="msedge", headless=get_headless(), args=["--start-maximized"])
-        context = browser.new_context(no_viewport=True)
-        page = context.new_page()
-        yield page
-        context.close()
-        browser.close()
-        p.stop()
 
 
 @pytest.fixture()
@@ -237,6 +190,31 @@ def firefox_client_login():
                 sleep(2)
                 if page.query_selector(ClientHomeBase().consoleXpath()):
                     break
+        yield page
+        try:
+            context.storage_state(path=ss_file)
+        except Exception as e:
+            print(e)
+        context.close()
+        browser.close()
+        p.stop()
+
+
+@pytest.fixture()
+def chrome_management_login():
+    ss_file = 'management_login_data.json'
+    with sync_playwright() as p:
+        browser = p.chromium.launch(channel="chrome", headless=get_headless(), args=["--start-maximized"])
+        if os.path.isfile(ss_file):
+            context = browser.new_context(storage_state=ss_file, no_viewport=True)
+        else:
+            context = browser.new_context(no_viewport=True)
+        page = context.new_page()
+        go_to_login_page(page)
+        input_account_number(page)
+        input_password(page)
+        click_login_button(page)
+        assert_login_success(page)
         yield page
         try:
             context.storage_state(path=ss_file)
