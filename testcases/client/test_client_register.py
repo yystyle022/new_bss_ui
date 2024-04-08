@@ -1,3 +1,4 @@
+import allure
 from page.ClientRegisterPage import *
 from page.ClientPage import go_to_home_page_no_login
 from page.ClientHomePage import click_register_button

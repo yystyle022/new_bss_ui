@@ -1,7 +1,7 @@
 # -*- coding=utf-8 -*-
 # @Time : 2023/4/26 10:40
 # @Author : yangyang
-# @File : bss-ui/test_management_login_success.py
+# @File : bss-ui/test_management_login.py
 
 
 import allure

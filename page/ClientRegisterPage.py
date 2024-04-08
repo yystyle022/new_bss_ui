@@ -1,4 +1,3 @@
-import allure
 from base.ClientRegisterBase import *
 from common.allure_function import write_log_to_allure_report
 
@@ -47,3 +46,4 @@ def click_get_verification_code(page):
     @return:
     '''
     page.click(ClientRegisterBase().GetVerificationCodeButtonXpath())
+    write_log_to_allure_report(page, "点击获取验证码按钮")
