@@ -43,10 +43,11 @@ def go_to_console_overview_page(page):
     '''
     page.goto(ConsoleOverviewPageUrl)
     try:
-        assert page.wait_for_selector(ClientConsoleBase().ServcieTotalXpath(), timeout=5000), '进入控制台概览页面失败'
+        page.wait_for_selector(ClientConsoleBase().ServcieTotalXpath(), timeout=5000)
         write_log_to_allure_report(page, '进入控制台概览页面成功')
-    except Exception as error:
-        write_log_to_allure_report(page, f'进入控制台概览页面失败：{error}')
+    except Exception:
+        write_log_to_allure_report(page, f'进入控制台概览页面失败')
+        assert False, '进入控制台概览页面失败'
 
 
 def go_to_cm_service_instance_page(page):
@@ -57,10 +58,11 @@ def go_to_cm_service_instance_page(page):
     '''
     page.goto(CmServiceInstancePageUrl)
     try:
-        assert page.wait_for_selector(ClientInstanceList().CmListTitleXpath(), timeout=5000), '进入厘米级实例列表失败'
+        page.wait_for_selector(ClientInstanceList().CmListTitleXpath(), timeout=5000)
         write_log_to_allure_report(page, '进入厘米级服务实例页面成功')
-    except Exception as error:
-        write_log_to_allure_report(page, f'进入厘米级服务实例页面失败：{error}')
+    except Exception:
+        write_log_to_allure_report(page, f'进入厘米级服务实例页面失败')
+        assert False, '进入厘米级实例列表失败'
 
 
 def go_to_dm_service_instance_page(page):
@@ -71,10 +73,11 @@ def go_to_dm_service_instance_page(page):
     '''
     page.goto(DmServiceInstancePageUrl)
     try:
-        assert page.wait_for_selector(ClientInstanceList().DmListTitleXpath(), timeout=5000), '进入亚米级实例列表失败'
+        page.wait_for_selector(ClientInstanceList().DmListTitleXpath(), timeout=5000)
         write_log_to_allure_report(page, '进入亚米级服务实例页面成功')
-    except Exception as error:
-        write_log_to_allure_report(page, f'进入亚米级服务实例页面失败：{error}')
+    except Exception:
+        write_log_to_allure_report(page, f'进入亚米级服务实例页面失败')
+        assert False, '进入亚米级实例列表失败'
 
 
 def go_to_home_page_no_login(page):
@@ -85,10 +88,11 @@ def go_to_home_page_no_login(page):
     '''
     page.goto(HomePage)
     try:
-        assert page.wait_for_selector(ClientHomeBase().registerButtonXpath(), timeout=5000), '进入首页失败'
+        page.wait_for_selector(ClientHomeBase().registerButtonXpath(), timeout=5000)
         write_log_to_allure_report(page, '进入首页成功')
-    except Exception as error:
-        write_log_to_allure_report(page, f'进入首页失败：{error}')
+    except Exception:
+        write_log_to_allure_report(page, f'进入首页失败')
+        assert False, '进入首页失败'
 
 
 def go_to_account_register_page(page):

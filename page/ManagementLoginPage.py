@@ -49,7 +49,8 @@ def assert_login_success(page):
     @return:
     '''
     try:
-        assert page.wait_for_selector(ManagementLeftNavicationBar().serviceProductManagementXpath(), timeout=5000), '登录失败'
+        page.wait_for_selector(ManagementLeftNavicationBar().serviceProductManagementXpath(), timeout=2000)
         write_log_to_allure_report(page, '登录成功')
-    except Exception as error:
-        write_log_to_allure_report(page, f'登录失败：{error}')
+    except Exception:
+        write_log_to_allure_report(page, f'登录失败')
+        assert False, f"登陆失败，未找到元素{ManagementLeftNavicationBar().serviceProductManagementXpath()}"

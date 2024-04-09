@@ -9,10 +9,11 @@ def assert_into_register_page_success(page):
     @return:
     '''
     try:
-        assert page.wait_for_selector(ClientRegisterBase().UserRegisterNodeXpath(), timeout=5000), '进入注册页面失败'
+        page.wait_for_selector(ClientRegisterBase().UserRegisterNodeXpath(), timeout=5000)
         write_log_to_allure_report(page, '进入注册页面成功')
-    except Exception as error:
-        write_log_to_allure_report(page, f'进入注册页面失败：{error}')
+    except Exception:
+        write_log_to_allure_report(page, f'进入注册页面失败')
+        assert False, f'进入注册页面失败,未找到元素：{ClientRegisterBase().UserRegisterNodeXpath()}'
 
 
 def assert_input_phone_number_incorrect(page):
@@ -22,10 +23,11 @@ def assert_input_phone_number_incorrect(page):
     @return:
     '''
     try:
-        assert page.wait_for_selector(ClientRegisterBase().PleaseInputRightPhoneNumberWarningXpath(), timeout=5000), '输入手机号错误'
+        page.wait_for_selector(ClientRegisterBase().PleaseInputRightPhoneNumberWarningXpath(), timeout=5000)
+        write_log_to_allure_report(page, '输入手机号不正确')
+    except Exception:
         write_log_to_allure_report(page, '输入手机号正确')
-    except Exception as error:
-        write_log_to_allure_report(page, f'输入手机号错误：{error}')
+        assert False, '输入手机号正确'
 
 
 def input_phone_number(page, phoneNumber):
