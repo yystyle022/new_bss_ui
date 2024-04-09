@@ -42,15 +42,15 @@ def click_login_button(page):
     write_log_to_allure_report(page, "点击登录按钮")
 
 
-def assert_login_success(page):
+def assert_element_exist(page, element):
     '''
-    断言登录成功
+    断言元素存在
     @param page:
     @return:
     '''
     try:
-        page.wait_for_selector(ManagementLeftNavicationBar().serviceProductManagementXpath(), timeout=2000)
+        page.wait_for_selector(element, timeout=2000)
         write_log_to_allure_report(page, '登录成功')
     except Exception:
         write_log_to_allure_report(page, f'登录失败')
-        assert False, f"登陆失败，未找到元素{ManagementLeftNavicationBar().serviceProductManagementXpath()}"
+        assert False, f"登陆失败，未找到元素{element}"

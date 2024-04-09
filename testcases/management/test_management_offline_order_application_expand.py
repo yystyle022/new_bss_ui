@@ -1,7 +1,7 @@
 # -*- coding=utf-8 -*-
 # @Time : 2023/10/12 9:40
 # @Author : yangyang
-# @File : bss-ui/test_management_online_order_application_expand.py
+# @File : bss-ui/test_management_offline_order_application_expand.py
 import allure
 import pytest
 from common.playwrightFunction import online_order_application_expand_common_model, review_online_order_application

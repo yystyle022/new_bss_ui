@@ -27,3 +27,10 @@ class ManagementLoginBase:
         @return:
         '''
         return "//span[text()='登 录']"
+
+    def AccountNoExistToastXpath(self):
+        '''
+        账号不存在toast提示
+        @return:
+        '''
+        return "//span[text()='该账号不存在 ']"

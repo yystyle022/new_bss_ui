@@ -1,7 +1,7 @@
 # -*- coding=utf-8 -*-
 # @Time : 2023/10/7 17:25
 # @Author : yangyang
-# @File : bss-ui/test_management_online_order_application_new_purchase.py
+# @File : bss-ui/test_management_offline_order_application_new_purchase.py
 import allure
 from common.playwrightFunction import online_order_application_new_purchase_common_model, review_online_order_application
 
