@@ -1,0 +1,78 @@
+uat:
+  client:
+    user_yangyang:
+      UserId: 71268
+      username: 18322369885
+      password: YANGyang022
+      SIS: hg56zm157p23ga6ynkm0dgteicai1s9pfve5vhe7fm3px2ghegxxn0keszeh4ps4nh62vxciqgmuxq34dm4cxh2npyi41ktieg488pr5pp99
+      SIK: 1377037819
+    user_zhangning:
+      UserId: 67683
+      username: 15531444107
+      password: Zhang1234
+      SIS: 5bhtnstbyagzia79bdziqe3br60xtwbmt9n9w6j7r644u61qen5nems4miwhfzdjxjq16z78cegmfif3sq1acy06g8wtg3b3s57hqbv3f41c
+      SIK: 2350614701
+    user_test:
+      UserId: 71269
+      username: 15620849885
+      password: YANGyang022
+      SIS: 40p66f351it5ag10a8hgxrum28pahdhyvui9dmms7kp1sfden5uw143x48gnv2dznk8w9ctjw472qf1e1xsvhcrf7s0dhxz682bfsqdfysfs
+      SIK: 7081483419
+    user_no_exist:
+      username: 18888888888
+      password: YANGyang022
+    user_password_mistake:
+      username: 18322369885
+      password: YANGyang022.com
+  management:
+    user_test:
+      username: test
+      password: liufentest123
+    user_sixents:
+      username: sixents
+      password: $Nbiud8po23%yf*F
+    user_no_exist:
+      username: testnoexist
+      password: liufentest123
+    user_password_mistake:
+      username: test
+      password: liufentest12345
+prod:
+  client:
+    user_zhangning:
+      UserId: 67683
+      username: 15531444107
+      password: Zhang1234
+      SIS: 5bhtnstbyagzia79bdziqe3br60xtwbmt9n9w6j7r644u61qen5nems4miwhfzdjxjq16z78cegmfif3sq1acy06g8wtg3b3s57hqbv3f41c
+      SIK: 2350614701
+    user_yangyang:
+      UserId: 67683
+      username: 18322369885
+      password: YANGyang022
+      SIS: 2ddds6kyzfmpj628920nuydc49zehcffvgh63qx052x5r5ie6i8m2zr46t9t40au0ji316sy982jvqvbt22ppkrb2maw73din4fs6njcxt4a
+      SIK: 9663777565
+    user_no_exist:
+      username: 18888888888
+      password: YANGyang022
+    user_password_mistake:
+      username: 18322369885
+      password: YANGyang022.com
+  management:
+    user_test:
+      username: test
+      password: VqQjEQ4UvLRcUVbY
+    user_no_exist:
+      username: testnoexist
+      password: liufentest123
+    user_password_mistake:
+      username: test
+      password: liufentest12345
+st:
+  client:
+    user_yangyang:
+      username: 18322369885
+      password: YANGyang022
+  management:
+    user_sixents:
+      username: sixents
+      password: $Nbiud8po23%yf*F

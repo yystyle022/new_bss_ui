@@ -1,0 +1,28 @@
+uat:
+  ClientHost: https://bss-user-uat.sixents.com
+  ManagementHost: https://bss-backend-uat.sixents.com
+  BroadCastHost: test1-vrs.sixents.com
+  OrionBroadCastHost: 82.157.73.98
+  AuthUrl: https://test1-auth.sixents.com/sdkauth/v1/auth
+  LoginUrl: https://test1-login.sixents.com/api/v3/login
+
+
+prod:
+  ClientHost: https://www.sixents.com
+  ManagementHost: https://bssadmin.sixents.com
+  BroadCastHost: vrs.sixents.com
+  OrionBroadCastHost: orion-wk.sixents.com
+  AuthUrl: https://openapi.sixents.com/sdkauth/v1/auth
+  LoginUrl: https://prod1-login.sixents.com/api/v3/login
+
+
+st:
+  ClientHost: https://bss-front-st.sixents.com
+  ManagementHost: https://bssadmin-st.sixents.com
+  BroadCastHost: st-vrs.sixents.com
+  OrionBroadCastHost: 82.157.73.98
+  AuthUrl: https://st1-auth.sixents.com/sdkauth/v1/auth
+  LoginUrl: https://st1-login.sixents.com/api/v3/login
+
+
+

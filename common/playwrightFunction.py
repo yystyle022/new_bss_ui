@@ -6,6 +6,7 @@ import requests
 import numpy as np
 from time import sleep
 from datetime import datetime
+from allure_function import write_log_to_allure_report
 
 userId = "71268"
 LiQingExpandInstanceId = random.choice(["9871572", "970250264", "970250246", "970250222"])
@@ -42,6 +43,19 @@ BoFaUrl = "uat1-vrs.sixents.com"
 # expandInstanceId = "66680"
 # reviewServerNumber = ""
 # BoFaUrl = "vrs.sixents.com"
+
+def assert_element_exist(page, element, timeout=5000):
+    '''
+    断言元素存在
+    @param page:
+    @return:
+    '''
+    try:
+        page.wait_for_selector(element, timeout=timeout)
+        write_log_to_allure_report(page, f'元素{element}存在,已找到')
+    except Exception:
+        write_log_to_allure_report(page, f'元素{element}未找到')
+        assert False, f"未找到元素{element}"
 
 
 def dragbox_location(page):
@@ -152,7 +166,6 @@ def screenshot_to_allure(page, name):
     '''
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
     path = f'../result/{name}.png'
-    sleep(0.5)
     page.screenshot(timeout=5000, path=path)
     allure.attach.file(path, name=datetime.now().strftime("%Y-%m-%d %H:%M:%S") + name, attachment_type=allure.attachment_type.PNG)
 
@@ -164,116 +177,6 @@ def write_log_to_allure(text):
     @return:
     '''
     allure.attach(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}  {text}', name=text, attachment_type=allure.attachment_type.TEXT)
-
-
-def assert_element_exist(page, element):
-    '''
-    登录成功断言
-    @param page:
-    @param element:
-    @return:
-    '''
-    sleep(1)
-    assert page.locator(element).count() > 0, f'页面元素：{element}不存在,请检查页面/元素是否加载成功'
-
-
-def management_login_success(page):
-    '''
-    登录管理端
-    @param page:
-    @return:
-    '''
-    with allure.step('打开管理端官网进入登录页'):
-        page.goto(managementURL)
-        write_log_to_allure(f'打开管理端官网:{managementURL},进入登录页面')
-        screenshot_to_allure(page, '打开官网进入首页')
-
-    with allure.step('输入用户名'):
-        page.fill("//input[@placeholder='账号或手机号']", managementUsername)
-        write_log_to_allure(f'输入用户名：{managementUsername}')
-        screenshot_to_allure(page, '输入用户名')
-
-    with allure.step('输入密码'):
-        page.fill("//input[@placeholder='密码']", managementPassword)
-        write_log_to_allure(f'输入用密码：{managementPassword}')
-        screenshot_to_allure(page, '输入密码')
-
-    with allure.step('点击登录按钮'):
-        page.click('//button[@type="submit"]')
-        write_log_to_allure('点击登录按钮,进行登录')
-        screenshot_to_allure(page, '点击登录按钮')
-        sleep(2)
-
-    with allure.step('验证是否登录成功'):
-        assert_element_exist(page, "//span[text()='首页']")
-        write_log_to_allure('验证页面是否包含首页元素，首页元素存在，登录成功')
-        screenshot_to_allure(page, '验证是否登录成功')
-
-
-def management_login_fail_password_mistake(page):
-    '''
-    登录管理端
-    @param page:
-    @return:
-    '''
-    with allure.step('打开管理端官网进入登录页'):
-        page.goto(managementURL)
-        write_log_to_allure(f'打开管理端官网:{managementURL},进入登录页面')
-        screenshot_to_allure(page, '打开官网进入首页')
-
-    with allure.step('输入用户名'):
-        page.fill("//input[@placeholder='账号或手机号']", managementUsername)
-        write_log_to_allure(f'输入用户名：{managementUsername}')
-        screenshot_to_allure(page, '输入用户名')
-
-    with allure.step('输入密码'):
-        page.fill("//input[@placeholder='密码']", managementPassword1)
-        write_log_to_allure(f'输入用密码：{managementPassword1}')
-        screenshot_to_allure(page, '输入密码')
-
-    with allure.step('点击登录按钮'):
-        page.click('//button[@type="submit"]')
-        write_log_to_allure('点击登录按钮,进行登录')
-        screenshot_to_allure(page, '点击登录按钮')
-        sleep(2)
-
-    with allure.step('验证是否登录失败-密码错误'):
-        assert_element_exist(page, "//span[text()='密码错误！']")
-        write_log_to_allure('验证页面是否包含密码错误元素，元素存在，登录失败')
-        screenshot_to_allure(page, '验证是否登录失败-密码错误')
-
-
-def management_login_fail_server_number_no_exist(page):
-    '''
-    登录管理端失败-账号不存在
-    @param page:
-    @return:
-    '''
-    with allure.step('打开管理端官网进入登录页'):
-        page.goto(managementURL)
-        write_log_to_allure(f'打开管理端官网:{managementURL},进入登录页面')
-        screenshot_to_allure(page, '打开官网进入首页')
-
-    with allure.step('输入用户名'):
-        page.fill("//input[@placeholder='账号或手机号']", managementUsername1)
-        write_log_to_allure(f'输入用户名：{managementUsername1}')
-        screenshot_to_allure(page, '输入用户名')
-
-    with allure.step('输入密码'):
-        page.fill("//input[@placeholder='密码']", managementPassword1)
-        write_log_to_allure(f'输入用密码：{managementPassword1}')
-        screenshot_to_allure(page, '输入密码')
-
-    with allure.step('点击登录按钮'):
-        page.click('//button[@type="submit"]')
-        write_log_to_allure('点击登录按钮,进行登录')
-        screenshot_to_allure(page, '点击登录按钮')
-        sleep(1)
-
-    with allure.step('验证是否登录失败-账号不存在'):
-        assert_element_exist(page, "//span[text()='该账号不存在 ']")
-        write_log_to_allure('验证页面是否包含账号不存在元素，元素存在，登录失败')
-        screenshot_to_allure(page, '验证是否登录失败-账号不存在')
 
 
 def click_step(page, describe, position, sleepTime: int = 0):
@@ -310,31 +213,6 @@ def fill_step(page, describe, position, number, sleepTime: int = 0):
             sleep(sleepTime)
 
 
-def assert_step(page, describe, element):
-    '''
-    断言元素是否存在
-    @param page:
-    @param describe:
-    @param element:
-    @return:
-    '''
-    with allure.step(describe):
-        assert_element_exist(page, element)
-        write_log_to_allure(describe)
-        screenshot_to_allure(page, describe)
-
-
-def write_and_screenshot(page, describe):
-    '''
-    记录日志和截图步骤
-    @param page: 驱动
-    @param describe: 描述
-    @return:
-    '''
-    write_log_to_allure(describe)
-    screenshot_to_allure(page, describe)
-
-
 def go_to_online_order_application_page(page, model: str = '1', where: str = '1'):
     '''
     线下订单申请进入不同类型的订单页面
@@ -343,7 +221,6 @@ def go_to_online_order_application_page(page, model: str = '1', where: str = '1'
     @param where: 页面  1：新购页面   2：扩容页面   3：续费页面   4：试用转正式页面
     @return: 无返回
     '''
-    management_login_success(page)
     click_step(page=page, describe='点击首页左侧导航栏【服务产品管理】，弹出下拉列表', position="//span[text()='服务产品管理']")
     click_step(page=page, describe='点击首页左侧导航栏【线下订单申请】，进入线下订单列表页面', position="//span[text()='线下订单申请']")
     click_step(page=page, describe='点击页面【新增申请】button，进入线下订单申请页面', position="//span[text()='新增申请']")

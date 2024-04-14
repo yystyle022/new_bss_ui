@@ -7,7 +7,6 @@
 from base.ManagementLoginBase import *
 from common.playwrightFunction import *
 from common.allure_function import write_log_to_allure_report
-from base.ManagementLeftNavicationBar import ManagementLeftNavicationBar
 
 
 def input_account_number(page, phoneNumber=managementUsername):
@@ -40,17 +39,3 @@ def click_login_button(page):
     '''
     page.click(ManagementLoginBase().LoginButtonXpath())
     write_log_to_allure_report(page, "点击登录按钮")
-
-
-def assert_element_exist(page, element):
-    '''
-    断言元素存在
-    @param page:
-    @return:
-    '''
-    try:
-        page.wait_for_selector(element, timeout=2000)
-        write_log_to_allure_report(page, '登录成功')
-    except Exception:
-        write_log_to_allure_report(page, f'登录失败')
-        assert False, f"登陆失败，未找到元素{element}"

@@ -5,7 +5,7 @@ class ManagementLeftNavicationBar:
         返回左侧导航栏服务产品管理Xpath
         @return:
         '''
-        return "//span[text()='服务产品']"
+        return "//span[text()='服务产品管理']"
 
     def onlineOrderApplicationXpath(self):
         '''

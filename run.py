@@ -3,10 +3,10 @@ import shutil
 import pytest
 
 # 公司电脑的allure路径
-# allure_path = r'D:\python3.10.10\Scripts\allure-2.13.2\bin\allure.bat'
+allure_path = r'D:\python3.10.10\Scripts\allure-2.13.2\bin\allure.bat'
 # allure_path = r'D:\python3.8\Scripts\allure-2.13.2\bin\allure.bat'
 # 家里的台式机电脑allure路径
-allure_path = r'E:\allure-2.13.2\bin\allure.bat'
+# allure_path = r'E:\allure-2.13.2\bin\allure.bat'
 # 家里的笔记本电脑allure路径
 # allure_path = r'D:\Software\allure-2.27.0\bin\allure.bat'
 # 执行结果路径

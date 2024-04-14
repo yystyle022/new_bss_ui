@@ -1,0 +1,26 @@
+uat:
+  bss:
+    host: bj-cdb-b5o7vu30.sql.tencentcdb.com
+    port: 60507
+    username: qa_zhangning
+    password: vGT&MVC2h3A6@MLP
+    datebase: bss
+  poseidon:
+    host: bj-cdb-9lx1unfs.sql.tencentcdb.com
+    port: 61861
+    username: jishu
+    password: O%G2PR6V2*
+    datebase: poseidon
+prod:
+  bss:
+    host: bj-cdb-c19xdnyc.sql.tencentcdb.com
+    port: 60436
+    username: yanfa
+    password: Wn%FKHr8!^pBy7XV
+    datebase: bss
+  poseidon:
+    host: bj-cdb-68msg3wg.sql.tencentcdb.com
+    port: 62121
+    username: yanfa_readonly
+    password: eGCjb$ZGZ&^@bjyw
+    datebase: poseidon

@@ -4,54 +4,60 @@
 # @File : bss-ui/test_management_login.py
 
 
-import pytest
 from page.ManagementLoginPage import *
 from page.ManagementPage import go_to_login_page
+from base.ManagementLeftNavicationBar import ManagementLeftNavicationBar
 
 
 @allure.feature('管理端登录测试')
-@allure.title('谷歌测试浏览器-登录成功')
-def test_login_management_success_chromium_browser(chromium_browser):
+def test_login_management_success(browser):
     '''
     谷歌测试浏览器登录管理端-登录成功
     @param chromium_browser:
     @return:
     '''
+    browser_name = browser['name']
+    page = browser['page']
+    allure.dynamic.title(f'{browser_name}浏览器-登录成功')
+
     with allure.step('打开管理端进入登陆页面'):
-        go_to_login_page(chromium_browser)
+        go_to_login_page(page)
 
     with allure.step('输入账号'):
-        input_account_number(chromium_browser)
+        input_account_number(page)
 
     with allure.step('输入密码'):
-        input_password(chromium_browser)
+        input_password(page)
 
     with allure.step('点击登录按钮'):
-        click_login_button(chromium_browser)
+        click_login_button(page)
 
     with allure.step('验证是否登录成功'):
-        assert_element_exist(chromium_browser, ManagementLeftNavicationBar().serviceProductManagementXpath())
+        assert_element_exist(page, ManagementLeftNavicationBar().serviceProductManagementXpath())
 
 
 @allure.feature('管理端登录测试')
-@allure.title('谷歌测试浏览器-账号不存在')
-def test_login_management_account_no_exist_chromium_browser(chromium_browser):
+def test_login_management_account_no_exist_chromium_browser(browser):
     '''
     谷歌测试浏览器登录管理端-登录成功
     @param chromium_browser:
     @return:
     '''
+    browser_name = browser['name']
+    page = browser['page']
+    allure.dynamic.title(f'{browser_name}浏览器-登录账号不存在')
+
     with allure.step('打开管理端进入登陆页面'):
-        go_to_login_page(chromium_browser)
+        go_to_login_page(page)
 
     with allure.step('输入账号'):
-        input_account_number(chromium_browser, phoneNumber=managementUsername1)
+        input_account_number(page, phoneNumber=managementUsername1)
 
     with allure.step('输入密码'):
-        input_password(chromium_browser)
+        input_password(page)
 
     with allure.step('点击登录按钮'):
-        click_login_button(chromium_browser)
+        click_login_button(page)
 
     with allure.step('验证提示:账号不存在'):
-        assert_element_exist(chromium_browser,ManagementLoginBase().AccountNoExistToastXpath())
+        assert_element_exist(page, ManagementLoginBase().AccountNoExistToastXpath())

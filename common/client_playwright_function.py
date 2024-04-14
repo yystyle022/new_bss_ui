@@ -11,7 +11,7 @@ from datetime import datetime
 from base.ClientHomeBase import ClientHomeBase
 from dateutil.relativedelta import relativedelta
 from base.ClientLeftNavigationBar import ClientLeftNavigationBar
-from common.playwrightFunction import click_step, fill_step, write_log_to_allure, screenshot_to_allure, client_login
+from common.playwrightFunction import click_step, fill_step, write_log_to_allure, screenshot_to_allure
 
 
 def manual_active_server_number(page, servernumber: str, productName: str = "1", type: str = '0'):
@@ -105,7 +105,6 @@ def get_server_number_password(page, servernumber: str, productName: str = '1'):
     @return:
     '''
     # 登录官网成功
-    client_login(page)
     click_step(page=page, describe='点击首页左上角控制台按钮，进入控制台页面', position=ClientHomeBase().consoleXpath())
     click_step(page=page, describe='点击控制台页面左侧导航栏服务号管理菜单', position="//span[text()='服务号管理']")
     click_step(page=page, describe='点击控制台页面左侧导航栏服务号管理-厘米级服务', position="//span[text()='厘米级服务']")
@@ -135,7 +134,6 @@ def serach_instance_AK_AS(page, servernumber, productName: str = '1'):
     @return:
     '''
     # 登录官网成功
-    client_login(page)
     click_step(page=page, describe='点击首页左上角控制台按钮，进入控制台页面', position=ClientHomeBase().consoleXpath())
     click_step(page=page, describe='点击控制台页面左侧导航栏服务号管理菜单', position="//span[text()='服务号管理']")
     click_step(page=page, describe='点击控制台页面左侧导航栏服务号管理-厘米级服务', position="//span[text()='厘米级服务']")

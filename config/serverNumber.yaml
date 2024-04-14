@@ -1,0 +1,8 @@
+uat:
+  LiQingExpandInstanceId: [ "9871572", "970250264", "970250246", "970250222" ]
+  FenMingExpandInstanceId: [ "970250225", "934295104", "68169", "68469" ]
+  OrionExpandInstanceId: [ "200931202","136313947","68365","68490" ]
+prod:
+  LiQingExpandInstanceId: [ "919636896", "66931", "59772", "61344" ]
+  FenMingExpandInstanceId: [ "919636897", "65498", "62948", "59774" ]
+  OrionExpandInstanceId: [ "578560030","66704","66514","66514" ]
