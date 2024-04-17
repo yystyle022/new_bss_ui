@@ -6,6 +6,7 @@
 
 from page.ManagementLoginPage import *
 from page.ManagementPage import go_to_login_page
+from page.CommonPageFunction import assert_element_exist
 from base.ManagementLeftNavicationBar import ManagementLeftNavicationBar
 
 
@@ -51,7 +52,7 @@ def test_login_management_account_no_exist_chromium_browser(browser):
         go_to_login_page(page)
 
     with allure.step('输入账号'):
-        input_account_number(page, phoneNumber=managementUsername1)
+        input_account_number(page, AccountNumber=managementUsername1)
 
     with allure.step('输入密码'):
         input_password(page)

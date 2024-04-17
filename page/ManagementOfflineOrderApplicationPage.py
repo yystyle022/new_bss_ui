@@ -1,5 +1,5 @@
 import allure
-from common.playwrightFunction import assert_element_exist
+from page.CommonPageFunction import *
 from common.allure_function import write_log_to_allure_report
 from base.ManagementOfflineOrderApplicationBase import ManagementOfflineOrderApplicationBase
 
@@ -10,8 +10,7 @@ def click_add_application_button(page):
     @return:
     '''
     # 点击新增申请按钮
-    page.click(ManagementOfflineOrderApplicationBase().NewApplicationButtonXpath())
-    write_log_to_allure_report(page, text='点击新增申请按钮')
+    click_operation(page, ManagementOfflineOrderApplicationBase().NewApplicationButtonXpath())
 
 
 def choice_order_mode(page, orderMode):
@@ -263,7 +262,7 @@ def input_purchase_number(page, number):
     @param number:
     @return:
     '''
-    page.fill(ManagementOfflineOrderApplicationBase().InstanceIdInputXpath(), f"{number}")
+    page.fill(ManagementOfflineOrderApplicationBase().PurchaseNumberInputXpath(), f"{number}")
     write_log_to_allure_report(page, text=f"输入的购买数量为：{number}")
 
 
@@ -416,7 +415,7 @@ def click_ok_button(page):
 
 def go_to_pending_review_page(page):
     '''
-    进度待审核页面
+    进入待审核页面
     @param page:
     @return:
     '''
@@ -435,9 +434,9 @@ def get_application_number(page):
     return OrderApplicationNumber
 
 
-def offline_order_application_new_purchase(page, userId, salePersonName, salePersonPhoneNumber, orderMode=1, orderType=1, productName=1, testActive=False,
-                                           testActiveDuration=5, linkMethod=1, activeMethod=1, bindMethod=1, activeTimePoint=1, number=1, unit=2, duration=1,
-                                           price=1.21, orderRemark='UI测试', use=2):
+def offline_order_application_new_purchase(page, userId, salePersonName='UI测试新购订单', salePersonPhoneNumber='18322369886', orderMode=1, productName=1,
+                                           testActive=False, testActiveDuration=5, linkMethod=1, activeMethod=1, bindMethod=1, activeTimePoint=1, number=1,
+                                           unit=2, duration=1, price=1.21, orderRemark='UI测试新购订单审核', orderUse=2):
     '''
     线下订单购买，新购账号
     @param page:
@@ -456,7 +455,7 @@ def offline_order_application_new_purchase(page, userId, salePersonName, salePer
     @param number:数量
     @param price:价格
     @param orderRemark:备注
-    @param use:用途
+    @param orderUse:用途
     @return:
     '''
     with allure.step('点击订单申请按钮'):
@@ -466,7 +465,7 @@ def offline_order_application_new_purchase(page, userId, salePersonName, salePer
         choice_order_mode(page, orderMode)
 
     with allure.step('选择订单类型'):
-        choice_order_type(page, orderType)
+        choice_order_type(page, orderType=1)
 
     with allure.step('输入客户编号'):
         input_user_id(page, userId)
@@ -514,7 +513,252 @@ def offline_order_application_new_purchase(page, userId, salePersonName, salePer
         input_order_remark(page, orderRemark)
 
     with allure.step('选择订单用途'):
-        choice_order_use(page, use)
+        choice_order_use(page, orderUse)
+
+    with allure.step('点击提交按钮'):
+        click_submit_button(page)
+
+    with allure.step('点击确定按钮'):
+        click_sure_button(page)
+
+
+def offline_order_application_expand(page, userId, instanceId, salePersonName='UI测试扩容订单', salePersonPhoneNumber='18322369886', orderMode=1,
+                                     productName=1, testActive=False, testActiveDuration=5, activeTimePoint=1, number=1, unit=2, duration=1,
+                                     price=1.21, orderRemark='UI测试扩容订单审核', orderUse=2):
+    '''
+    扩容申请
+    @param page:
+    @param userId: 用户编号
+    @param instanceId: 实例ID
+    @param salePersonName: 销售名称
+    @param salePersonPhoneNumber: 销售电话
+    @param orderMode: 订单模式
+    @param productName: 产品名称
+    @param testActive: 是否测试激活
+    @param testActiveDuration: 测试激活时长
+    @param activeTimePoint: 激活时间点
+    @param number: 数量
+    @param unit: 购买单位
+    @param duration: 购买时长
+    @param price: 价格
+    @param orderRemark: 订单备注
+    @param orderUse: 订单用途
+    @return:
+    '''
+    with allure.step('点击订单申请按钮'):
+        click_add_application_button(page)
+
+    with allure.step('选择订单模式'):
+        choice_order_mode(page, orderMode)
+
+    with allure.step('选择订单类型'):
+        choice_order_type(page, orderType=2)
+
+    with allure.step('输入客户编号'):
+        input_user_id(page, userId)
+
+    with allure.step('选择产品名称'):
+        choice_product_name(page, productName)
+
+    with allure.step('选择是否测试激活和测试时长'):
+        choice_test_active(page, testActive, testActiveDuration)
+
+    with allure.step('选择激活时间点'):
+        choice_active_time_point(page, activeTimePoint)
+
+    with allure.step('填写实例ID'):
+        input_instance_id(page, instanceId)
+
+    with allure.step('填写购买数量'):
+        input_purchase_number(page, number)
+
+    with allure.step('选择购买时长单位'):
+        choice_purchase_duration_unit(page, unit)
+
+    with allure.step('填写购买时长'):
+        input_purchase_duration(page, duration)
+
+    with allure.step('填写购买价格'):
+        input_purchase_price(page, price)
+
+    with allure.step('填写线下合同时间,时间为今天'):
+        choice_offline_contract_date(page)
+
+    with allure.step('填写销售人员名称'):
+        input_sales_person_name(page, salePersonName)
+
+    with allure.step('填写销售人员手机号码'):
+        input_sales_person_phone_number(page, salePersonPhoneNumber)
+
+    with allure.step('填写订单备注'):
+        input_order_remark(page, orderRemark)
+
+    with allure.step('选择订单用途'):
+        choice_order_use(page, orderUse)
+
+    with allure.step('点击提交按钮'):
+        click_submit_button(page)
+
+    with allure.step('点击确定按钮'):
+        click_sure_button(page)
+
+
+def offline_order_application_renew(page, userId, serverNumber, salePersonName='UI测试续费订单', salePersonPhoneNumber='18322369886', orderMode=1,
+                                    productName=1, unit=2, duration=1, price=1.21, orderRemark='UI测试续费订单', orderUse=2):
+    '''
+    续费
+    @param page:
+    @param userId: 用户编号
+    @param serverNumber: 差分账号
+    @param salePersonName: 销售人员
+    @param salePersonPhoneNumber: 销售电话
+    @param orderMode: 订单模式
+    @param productName: 产品名称
+    @param unit: 单位  1-年；2-月；3-日
+    @param duration: 时长
+    @param price: 价格
+    @param orderRemark: 备注
+    @param orderUse: 用途
+    @return:
+    '''
+    with allure.step('点击订单申请按钮'):
+        click_add_application_button(page)
+
+    with allure.step('选择订单模式'):
+        choice_order_mode(page, orderMode)
+
+    with allure.step('选择订单类型'):
+        choice_order_type(page, orderType=3)
+
+    with allure.step('输入客户编号'):
+        input_user_id(page, userId)
+
+    with allure.step('选择产品名称'):
+        choice_product_name(page, productName)
+
+    with allure.step('点击选择账号按钮，弹出选择账号页面'):
+        click_choice_server_number(page)
+
+    with allure.step('查询条件，输入差分账号'):
+        server_number_search_input_server_number(page, serverNumber)
+
+    with allure.step('点击页面查询按钮，查询差分账号'):
+        click_server_number_search_button(page)
+
+    with allure.step('勾选差分账号'):
+        choice_server_number(page, serverNumber)
+
+    with allure.step('点击确定按钮'):
+        click_sure_button(page)
+
+    with allure.step('查询页面选择账号成功'):
+        assert_server_number_exist(page, serverNumber)
+
+    with allure.step('选择购买时长单位'):
+        choice_purchase_duration_unit(page, unit)
+
+    with allure.step('填写购买时长'):
+        input_purchase_duration(page, duration)
+
+    with allure.step('填写购买价格'):
+        input_purchase_price(page, price)
+
+    with allure.step('填写线下合同时间,时间为今天'):
+        choice_offline_contract_date(page)
+
+    with allure.step('填写销售人员名称'):
+        input_sales_person_name(page, salePersonName)
+
+    with allure.step('填写销售人员手机号码'):
+        input_sales_person_phone_number(page, salePersonPhoneNumber)
+
+    with allure.step('填写订单备注'):
+        input_order_remark(page, orderRemark)
+
+    with allure.step('选择订单用途'):
+        choice_order_use(page, orderUse)
+
+    with allure.step('点击提交按钮'):
+        click_submit_button(page)
+
+    with allure.step('点击确定按钮'):
+        click_sure_button(page)
+
+
+def offline_order_application_try_to_formal(page, userId, serverNumber, salePersonName='UI测试-试用转正式订单', salePersonPhoneNumber='18322369886', orderMode=1,
+                                            productName=1, unit=2, duration=1, price=1.21, orderRemark='UI测试-试用转正式订单审核', orderUse=2):
+    '''
+    试用转正式
+    @param page:
+    @param userId: 用户编号
+    @param serverNumber: 差分账号
+    @param salePersonName: 销售人员
+    @param salePersonPhoneNumber: 销售电话
+    @param orderMode: 订单模式
+    @param productName: 产品名称
+    @param unit: 单位
+    @param duration: 时长
+    @param price: 价格
+    @param orderRemark: 备注
+    @param orderUse: 用途
+    @return:
+    '''
+    with allure.step('点击订单申请按钮'):
+        click_add_application_button(page)
+
+    with allure.step('选择订单模式'):
+        choice_order_mode(page, orderMode)
+
+    with allure.step('选择订单类型'):
+        choice_order_type(page, orderType=4)
+
+    with allure.step('输入客户编号'):
+        input_user_id(page, userId)
+
+    with allure.step('选择产品名称'):
+        choice_product_name(page, productName)
+
+    with allure.step('点击选择账号按钮，弹出选择账号页面'):
+        click_choice_server_number(page)
+
+    with allure.step('查询条件，输入差分账号'):
+        server_number_search_input_server_number(page, serverNumber)
+
+    with allure.step('点击页面查询按钮，查询差分账号'):
+        click_server_number_search_button(page)
+
+    with allure.step('勾选差分账号'):
+        choice_server_number(page, serverNumber)
+
+    with allure.step('点击确定按钮'):
+        click_sure_button(page)
+
+    with allure.step('查询页面选择账号成功'):
+        assert_server_number_exist(page, serverNumber)
+
+    with allure.step('选择购买时长单位'):
+        choice_purchase_duration_unit(page, unit)
+
+    with allure.step('填写购买时长'):
+        input_purchase_duration(page, duration)
+
+    with allure.step('填写购买价格'):
+        input_purchase_price(page, price)
+
+    with allure.step('填写线下合同时间,时间为今天'):
+        choice_offline_contract_date(page)
+
+    with allure.step('填写销售人员名称'):
+        input_sales_person_name(page, salePersonName)
+
+    with allure.step('填写销售人员手机号码'):
+        input_sales_person_phone_number(page, salePersonPhoneNumber)
+
+    with allure.step('填写订单备注'):
+        input_order_remark(page, orderRemark)
+
+    with allure.step('选择订单用途'):
+        choice_order_use(page, orderUse)
 
     with allure.step('点击提交按钮'):
         click_submit_button(page)

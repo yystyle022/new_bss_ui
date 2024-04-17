@@ -6,7 +6,7 @@ import random
 import requests
 import pymysql
 from time import sleep
-from common.playwrightFunction import AuthURL, BoFaUrl
+from common.playwright_function import AuthURL, BoFaUrl
 from common.gga_generator import gen_ntriplogin, gen_sdklogin
 
 from common.unpassword import AES_ENCRYPT

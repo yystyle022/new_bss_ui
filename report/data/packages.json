@@ -2,73 +2,34 @@
   "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
   "name" : "packages",
   "children" : [ {
-    "name" : "testcases.client.test_client_register",
+    "name" : "testcases.client.test_client_expand_server_number",
     "children" : [ {
-      "name" : "点击首页注册按钮，正常跳转至注册页面",
-      "uid" : "d6ca251f9677939e",
-      "parentUid" : "1bc74c9bbc98482af3c6dc937f65a2f0",
+      "name" : "chrome浏览器-厘清实例列表扩容差分账号",
+      "uid" : "94453fe9feab205d",
+      "parentUid" : "8ce4456be38de423e6ab3b851a0093c9",
       "status" : "passed",
       "time" : {
-        "start" : 1712407600587,
-        "stop" : 1712407608494,
-        "duration" : 7907
+        "start" : 1713347184631,
+        "stop" : 1713347196456,
+        "duration" : 11825
       },
       "flaky" : false,
       "newFailed" : false,
-      "parameters" : [ ]
+      "parameters" : [ "'chrome'" ]
     }, {
-      "name" : "输入字母，提示:手机号不正确",
-      "uid" : "ed2b6743eb23c3f4",
-      "parentUid" : "1bc74c9bbc98482af3c6dc937f65a2f0",
+      "name" : "chrome浏览器-分明实例列表扩容差分账号",
+      "uid" : "2d3764bbf39c941b",
+      "parentUid" : "8ce4456be38de423e6ab3b851a0093c9",
       "status" : "passed",
       "time" : {
-        "start" : 1712407609400,
-        "stop" : 1712407617383,
-        "duration" : 7983
+        "start" : 1713347206619,
+        "stop" : 1713347218370,
+        "duration" : 11751
       },
       "flaky" : false,
       "newFailed" : false,
-      "parameters" : [ ]
-    }, {
-      "name" : "输入10位数字，提示:手机号不正确",
-      "uid" : "be767ebee04c10d5",
-      "parentUid" : "1bc74c9bbc98482af3c6dc937f65a2f0",
-      "status" : "passed",
-      "time" : {
-        "start" : 1712407618302,
-        "stop" : 1712407626417,
-        "duration" : 8115
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ ]
-    }, {
-      "name" : "输入11位数字，提示:手机号不正确",
-      "uid" : "90425db6a809071e",
-      "parentUid" : "1bc74c9bbc98482af3c6dc937f65a2f0",
-      "status" : "passed",
-      "time" : {
-        "start" : 1712407627369,
-        "stop" : 1712407635686,
-        "duration" : 8317
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ ]
-    }, {
-      "name" : "输入为空，提示:手机号不正确",
-      "uid" : "a4f4a539271a2eb5",
-      "parentUid" : "1bc74c9bbc98482af3c6dc937f65a2f0",
-      "status" : "passed",
-      "time" : {
-        "start" : 1712407636562,
-        "stop" : 1712407646498,
-        "duration" : 9936
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ ]
+      "parameters" : [ "'chrome'" ]
     } ],
-    "uid" : "testcases.client.test_client_register"
+    "uid" : "testcases.client.test_client_expand_server_number"
   } ]
 }

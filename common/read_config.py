@@ -3,11 +3,12 @@
 # @Author : yangyang
 # @File : new_bss_ui/read_config.py
 import os
+import yaml
 import random
 
-import yaml
-
 environment = 'uat'
+management = 'user_test'
+client = 'user_yangyang'
 
 
 def load_config_files(*file_paths):

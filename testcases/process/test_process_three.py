@@ -7,7 +7,7 @@ import allure
 import random
 from common.userstestok import ntrip_send_gga
 from common.client_playwright_function import serach_instance_AK_AS, get_server_number_password, manual_active_server_number, manual_bind_server_number
-from common.playwrightFunction import online_order_application_new_purchase_common_model, review_online_order_application, get_server_number, write_log_to_allure
+from common.playwright_function import online_order_application_new_purchase_common_model, review_online_order_application, get_server_number, write_log_to_allure
 
 
 @allure.feature('管理端新购 ntrip或sdk 手动激活手动绑定 非实时激活 的正式账号 可以正常ntrip登录使用')

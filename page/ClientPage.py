@@ -103,3 +103,6 @@ def go_to_account_register_page(page):
     '''
     page.goto(AccountRegisterPageUrl)
     write_log_to_allure_report(page, '去往账号注册页面')
+
+
+

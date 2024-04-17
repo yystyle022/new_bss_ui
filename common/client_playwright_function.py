@@ -11,7 +11,7 @@ from datetime import datetime
 from base.ClientHomeBase import ClientHomeBase
 from dateutil.relativedelta import relativedelta
 from base.ClientLeftNavigationBar import ClientLeftNavigationBar
-from common.playwrightFunction import click_step, fill_step, write_log_to_allure, screenshot_to_allure
+from common.playwright_function import click_step, fill_step, write_log_to_allure, screenshot_to_allure
 
 
 def manual_active_server_number(page, servernumber: str, productName: str = "1", type: str = '0'):

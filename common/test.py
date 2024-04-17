@@ -3,7 +3,10 @@
 # @Author : yangyang
 # @File : new_bss_ui/test.py
 from screeninfo import get_monitors
+import sys
+import os
 
+from testcases.conftest import save_directory
 from common.read_config import load_config_files
 
 
@@ -24,6 +27,14 @@ def browser_list():
     return load_config_files('common.yaml')['browser']
 
 
-if __name__ == '__main__':
-    print(browser_list())
+def get_client_yangyang_login_information():
+    '''
+    无头模式
+    @return:
+    '''
+    loginInformation = load_config_files('login.yaml')['management']['user_sixents']
+    return loginInformation['username'], loginInformation['password']
 
+
+if __name__ == '__main__':
+    print(save_directory)

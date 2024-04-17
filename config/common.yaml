@@ -3,9 +3,9 @@
 # @Author : yangyang
 # @File : new_bss_ui/playwright.yaml.py
 uat:
-  headless: True
+  headless: False
   GGA: $GPGGA, 025006.78, 4007.5533880, N, 11627.9528726, E, 1, 00, 1.0, 109.077, M, -9.077, M, 0.0, *54
-  browser: [ 'chrome', 'chromium', 'edge', 'firefox' ]
+  browser: [ 'chrome' ]
 prod:
   headless: False
   GGA: $GPGGA, 025006.78, 4007.5533880, N, 11627.9528726, E, 1, 00, 1.0, 109.077, M, -9.077, M, 0.0, *54
