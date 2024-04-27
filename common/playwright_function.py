@@ -1,6 +1,8 @@
 import os
 import cv2
 import random
+import time
+import random
 import requests
 import numpy as np
 
@@ -119,7 +121,7 @@ def get_slide_locus(distance):
     @param distance: 计算出的滑动距离
     @return: 返回滑动点的列表
     '''
-    distance += 8
+    distance += 7
     v = 0
     m = 0.312
     # 保存0.3内的位移
@@ -138,6 +140,47 @@ def get_slide_locus(distance):
         tracks.append(round(s))
         v = v0 + a * m
     return tracks
+
+
+
+# def get_slide_locus(distance):
+#     distance += random.uniform(-2, 2)  # 在距离上稍作调整
+#     tracks = []
+#     current = 0
+#     mid = distance * 4 / 5
+#     t = 0.2  # 起初的时间间隔可能更短
+#     v = 0
+#
+#     while current < distance:
+#         if current < mid:
+#             a = 2 * random.uniform(0.95, 1.05)  # 在加速度上引入随机因素
+#         else:
+#             a = -3 * random.uniform(0.95, 1.05)
+#
+#         v0 = v
+#         s = v0 * t + 0.5 * a * t * t
+#         current += s
+#         tracks.append(round(s))
+#         v = v0 + a * t
+#         t += random.uniform(0.002, 0.004)  # 随机改变时间间隔，使得速度的变化更不规则
+#
+#         # 加入随机停顿，模仿人在滑动时可能的短暂停留
+#         if random.randint(0, 9) < 1:
+#             tracks.append(0)
+#             time.sleep(random.uniform(0.015, 0.05))
+#
+#     # 调整最后的几个点，使得滑动停止更自然
+#     overshoot = current - distance
+#     if overshoot > 0:
+#         tracks = tracks[:-2] + [tracks[-2] - overshoot]
+#
+#     # 人为地增加几个小的前后波动，模仿手指在最后滑动的微调
+#     micro_adjustment = [random.randint(-1, 1) for _ in range(random.randint(2, 5))]
+#     tracks += micro_adjustment
+#
+#     return tracks
+
+
 
 # def click_step(page, describe, position, sleepTime: int = 0):
 #     '''

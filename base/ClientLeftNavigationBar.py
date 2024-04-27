@@ -1,5 +1,12 @@
 class ClientLeftNavigationBar:
 
+    def SixentsIconXpath(self):
+        '''
+        六分科技图标
+        @return:
+        '''
+        return "//div[@class='sider-logo-link']/img"
+
     def consoleOverviewXpath(self):
         '''
         控制台概览

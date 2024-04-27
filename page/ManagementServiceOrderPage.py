@@ -9,7 +9,7 @@ from base.ManagementServiceOrderBase import ManagementServiceOrderBase
 from page.ManagementPage import go_to_server_order_page, go_to_instance_list_page
 
 
-def input_order_number(page, orderNumber):
+def management_service_order_page_input_order_number(page, orderNumber):
     '''
     输入订单号码
     @param page:
@@ -20,7 +20,7 @@ def input_order_number(page, orderNumber):
     write_log_to_allure_report(page, text=f'输入订单号：{orderNumber}')
 
 
-def input_user_id(page, userId):
+def management_service_order_page_input_user_id(page, userId):
     '''
     输入用户编号
     @param page:
@@ -31,7 +31,7 @@ def input_user_id(page, userId):
     write_log_to_allure_report(page, text=f'输入用户编号：{userId}')
 
 
-def click_query_button(page):
+def management_service_order_page_click_query_button(page):
     '''
     点击查询按钮
     @param page:

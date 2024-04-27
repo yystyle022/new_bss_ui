@@ -4,10 +4,24 @@
 # @File : new_bss_ui/playwright.yaml.py
 uat:
   headless: False
-  GGA: $GPGGA, 025006.78, 4007.5533880, N, 11627.9528726, E, 1, 00, 1.0, 109.077, M, -9.077, M, 0.0, *54
-  browser: [ 'chrome' ]
+  GGA: $GPGGA,025006.78,4007.5533880,N,11627.9528726,E,1,00,1.0,109.077,M,-9.077,M,0.0,*54\r\n\r\n
+  LiQingMonutPoint: [ 'RTCM32_GRC4','RTCM32_GNSS','RTCM32_GREC','RTCM32_GNSS2','RTCM32_GNSS3','RTCM32_GNSS4','RTCM32_GRECJ','RTCM32_GRECJ2','RTCM32_GRECJ3','RTCM30_GR','RTCM33_BDS' ]
+  FenMingMonutPoint: [ 'RTCM32_GNSS','RTCM32_GRECJ_S1','RTCM32_GRECJ_RTD_15' ]
+  OrionMonutPoint: [ 'ORION_SL3_GRECJ' ]
+  NrtkPort: 8002
+  PPPRTKPort: 2101
+  browser: [ 'chromium' ]
 prod:
   headless: False
-  GGA: $GPGGA, 025006.78, 4007.5533880, N, 11627.9528726, E, 1, 00, 1.0, 109.077, M, -9.077, M, 0.0, *54
+  GGA: $GPGGA,025006.78,4007.5533880,N,11627.9528726,E,1,00,1.0,109.077,M,-9.077,M,0.0,*54\r\n\r\n
+  LiQingMonutPoint: [ 'RTCM32_GRC4','RTCM32_GNSS','RTCM32_GREC','RTCM32_GNSS2','RTCM32_GNSS3','RTCM32_GNSS4','RTCM32_GRECJ','RTCM32_GRECJ2','RTCM32_GRECJ3','RTCM30_GR','RTCM33_BDS' ]
+  FenMingMonutPoint: [ 'RTCM32_GNSS','RTCM32_GRECJ_S1','RTCM32_GRECJ_RTD_15' ]
+  OrionMonutPoint: [ 'ORION_SL3_GRECJ' ]
+  NrtkPort: 8002
+  PPPRTKPort: 2101
+  browser: [ 'chrome' ]
+prods:
+  headless: False
+  GGA: $GPGGA,025006.78,4007.5533880,N,11627.9528726,E,1,00,1.0,109.077,M,-9.077,M,0.0,*54\r\n\r\n
   browser: [ 'chrome', 'chromium', 'edge', 'firefox' ]
 

@@ -27,6 +27,11 @@ def click_purchase_button(page, product=1):
         page.click(ClientHomeBase().fenmingHomePageTitleXpath())
         page.click(ClientHomeBase().fenmingHomePagePurchaseButtonXpath())
         write_log_to_allure_report(page, '购买的账号为分明')
+    elif product == 3:
+        page.click(ClientHomeBase().OrionHomePageTitleXpath())
+        page.click(ClientHomeBase().OrionHomePagePurchaseButtonXpath())
+        write_log_to_allure_report(page, '购买的账号为星璨')
+
 
 def click_register_button(page):
     '''

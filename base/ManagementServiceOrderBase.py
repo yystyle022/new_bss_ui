@@ -196,9 +196,23 @@ class ManagementServiceOrderBase:
         '''
         return "//div[text()='试用订单']"
 
-    def ServiceOrderListTryOrderNumberXpath(self):
+    def ServiceOrderListFirstOrderNumberXpath(self):
         '''
-        服务订单列表-订单号
+        服务订单列表-订单列表-第一条订单的订单号
         @return:
         '''
         return "//table/tr[2]//span[contains(text(),'订单号')]"
+
+    def ServiceOrderListFirstOrderDetailButtonXpath(self):
+        '''
+        服务订单列表-订单列表-第一条订单的详情
+        @return:
+        '''
+        return "//table/tr[3]//a"
+
+    def ServiceOrderDetailFirstServerNumberXpath(self):
+        '''
+        订单详情页面，账号列表-第一个账号
+        @return:
+        '''
+        return "//div[text()=' 差分账号数据列表 ']/..//tbody/tr[1]/td[1]"

@@ -7,7 +7,7 @@ import requests
 import pymysql
 from time import sleep
 from common.playwright_function import AuthURL, BoFaUrl
-from common.gga_generator import gen_ntriplogin, gen_sdklogin
+from common.gga_generator import gen_ntriplogin, gen_sdklogin, gen_ppp_rtk_ntriplogin, gen_ppp_rtk_sdklogin
 
 from common.unpassword import AES_ENCRYPT
 
@@ -74,7 +74,7 @@ def auth(appKey, appSecret):
         print(f"鉴权失败,错误信息为：{e}")
 
 
-def ntrip_send_gga(serverNumber, pwd):
+def ntrip_send_gga(broadcastUrl, monutpoint, port, serverNumber, pwd, type='nrtk'):
     '''
     差分账号ntrip登录验证是否可用
     @param serverNumber:
@@ -83,11 +83,14 @@ def ntrip_send_gga(serverNumber, pwd):
     '''
     try:
         sock = socket.socket()
-        sock.connect((BoFaUrl, 8002))
-        sock.send(gen_ntriplogin(serverNumber, pwd, "RTCM32_GRECJ2"))
+        sock.connect((broadcastUrl, port))
+        if type == 'nrtk':
+            sock.send(gen_ntriplogin(serverNumber, pwd, monutpoint))
+        elif type == 'ppprtk':
+            sock.send(gen_ppp_rtk_ntriplogin(serverNumber, pwd, monutpoint))
         response = sock.recv(1024)
         print(response)
-        if b'ICY 200 OK' in response:
+        if b'200 OK' in response:
             data = '$GPGGA,025006.78,4007.5533880,N,11627.9528726,E,1,00,1.0,109.077,M,-9.077,M,0.0,*54\r\n\r\n'
             sock.send(data.encode('utf-8'))
             sleep(2)
@@ -104,20 +107,23 @@ def ntrip_send_gga(serverNumber, pwd):
         print(e)
 
 
-def sdk_send_gga(serverNumber, pwd):
+def sdk_send_gga(broadcastUrl, monutpoint, port, serverNumber, pwd, type='nrtk'):
     '''
-    差分账号sdk登录验证是否可用
+    差分账号sdk登录验证是否可用,账号必须已绑定才可以
     @param serverNumber:
     @param appSecret:
     @return:
     '''
     try:
         sock = socket.socket()
-        sock.connect((BoFaUrl, 8002))
-        sock.send(gen_sdklogin(serverNumber, pwd, "RTCM32_GRECJ2"))
+        sock.connect((broadcastUrl, port))
+        if type == 'nrtk':
+            sock.send(gen_sdklogin(serverNumber, pwd, monutpoint))
+        elif type == 'ppprtk':
+            sock.send(gen_ppp_rtk_sdklogin(serverNumber, pwd, monutpoint))
         response = sock.recv(1024)
         print(response)
-        if b'ICY 200 OK' in response:
+        if b'200 OK' in response:
             data = '$GPGGA,025006.78,4007.5533880,N,11627.9528726,E,1,00,1.0,109.077,M,-9.077,M,0.0,*54\r\n\r\n'
             sock.send(data.encode('utf-8'))
             sleep(2)
@@ -135,6 +141,6 @@ def sdk_send_gga(serverNumber, pwd):
 
 
 if __name__ == '__main__':
-    print(ntrip_send_gga(serverNumber='xtmwif1707062', pwd='PNnxaI26'))
+    print(sdk_send_gga('orion-wk.sixents.com', 'ORION_SL3_GRECJ', 2101, 'wcg211555', 'Ar7pl9MK', 'ppprtk'))
     # print(auth('0143769132', 'x7tr2yuw90b9y33fr555f4ye0rqjj6yu7zwe2uinerxqfhyy5u23pf7eadpk87fq'))
     # print(f"uiceshi{random.randint(20000, 30000)}")

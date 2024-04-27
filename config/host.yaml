@@ -1,7 +1,7 @@
 uat:
   ClientHost: https://bss-user-uat.sixents.com
   ManagementHost: https://bss-backend-uat.sixents.com
-  BroadCastHost: test1-vrs.sixents.com
+  BroadCastHost: uat1-vrs.sixents.com
   OrionBroadCastHost: 82.157.73.98
   AuthUrl: https://test1-auth.sixents.com/sdkauth/v1/auth
   LoginUrl: https://test1-login.sixents.com/api/v3/login

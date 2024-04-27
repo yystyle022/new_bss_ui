@@ -37,3 +37,24 @@ class ClientRegisterBase:
         @return:
         '''
         return "//div[text()='请输入正确的手机号']"
+
+    def UserServiceAgreementChoiceInputFrameXpath(self):
+        '''
+        用户服务协议选择框
+        @return:
+        '''
+        return "//input[@type='checkbox']"
+
+    def UserServiceAgreementEntranceXpath(self):
+        '''
+        注册页面用户服务协议跳转入口
+        @return:
+        '''
+        return "//a[contains(text(),'用户服务协议')]"
+
+    def UserServiceAgreementDetailPageTitleXpath(self):
+        '''
+        用户服务协议详情页面标题
+        @return:
+        '''
+        return "//strong[text()='北京六分科技有限公司服务协议']"

@@ -102,3 +102,11 @@ class ClientInstanceList:
         @return:
         '''
         return f"//td[text()='{InstanceId}']/../following-sibling::tr[1]//span[contains(text(),'AppSecret')]/following-sibling::span"
+
+    def CmInstanceListInstanceFormalAccountNumberButtonXpath(self, rank=1):
+        '''
+        实例列表-列表内的实例-正式账号按钮
+        @param rank: 第几条实例
+        @return:
+        '''
+        return f"//tbody/tr[{rank}]/td[10]/a"

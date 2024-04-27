@@ -19,7 +19,7 @@ def gen_ntriplogin(username: str, password: str, monutpoint: str):
     return strLogin.encode('utf-8')
 
 
-def gen_sdklogin(username: str, password: str, monutpoint: str):
+def gen_ppp_rtk_ntriplogin(username: str, password: str, monutpoint: str):
     '''
     登录语句
     :param username:
@@ -29,7 +29,35 @@ def gen_sdklogin(username: str, password: str, monutpoint: str):
     '''
     strUser = '%s:%s' % (username, password)
     bytesUser = base64.b64encode(strUser.encode('utf-8'))
+    strLogin = f'GET /{monutpoint} HTTP/1.1\r\nUser-Agent: NTRIP RTKLIB/2.4.3\r\nAccept: */*\r\nAuthorization: Basic {bytesUser.decode()}\r\nNtrip-Version: Ntrip/2.0\r\nConnection: close\r\n\r\n'
+    return strLogin.encode('utf-8')
+
+
+def gen_sdklogin(username: str, password: str, monutpoint: str):
+    '''
+    登录语句
+    :param username:
+    :param password:
+    :param monutpoint:
+    :return:
+    '''
+    strUser = f'{username}:{password}'
+    bytesUser = base64.b64encode(strUser.encode('utf-8'))
     strLogin = f'GET /{monutpoint} HTTP/1.0\r\nUser-Agent: SDK/csdk/1.1.2\r\nAccept: */*\r\nAuthorization: Basic {bytesUser.decode()}\r\nConnection: close\r\n\r\n'
+    return strLogin.encode('utf-8')
+
+
+def gen_ppp_rtk_sdklogin(username: str, password: str, monutpoint: str):
+    '''
+    登录语句
+    :param username:
+    :param password:
+    :param monutpoint:
+    :return:
+    '''
+    strUser = '%s:%s' % (username, password)
+    bytesUser = base64.b64encode(strUser.encode('utf-8'))
+    strLogin = f'GET /{monutpoint} HTTP/1.1\r\nUser-Agent: SDK/csdk/1.1.0\r\nAccept: */*\r\nAuthorization: Basic {bytesUser.decode()}\r\nNtrip-Version: Ntrip/2.0\r\nConnection: close\r\n\r\n'
     return strLogin.encode('utf-8')
 
 

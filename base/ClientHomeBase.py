@@ -21,6 +21,13 @@ class ClientHomeBase:
     def consoleXpath(self):
         return "//a[contains(text(),'控制台')]"
 
+    def HomePageTopTitleProductTabXpath(self):
+        '''
+        顶部产品tab
+        @return:
+        '''
+        return "//a[contains(text(),'六分商城')]/../..//a[contains(text(),'产品')]"
+
     # 首页厘清标题
     def liqingHomePageTitleXpath(self):
         return "//h5[text()='厘清/Locate-CM']"
@@ -35,4 +42,22 @@ class ClientHomeBase:
 
     # 首页分明立即购买按钮
     def fenmingHomePagePurchaseButtonXpath(self):
+        '''
+        首页分明立即购买按钮
+        @return:
+        '''
         return "//h5[text()='分明/Locate-DM']/..//span[text()='立即购买']"
+
+    def OrionHomePageTitleXpath(self):
+        '''
+        首页星璨标题
+        @return:
+        '''
+        return "//h5[text()='分明/Locate-DM']/../../../following-sibling::li//h5"
+
+    def OrionHomePagePurchaseButtonXpath(self):
+        '''
+        首页星璨立即购买按钮
+        @return:
+        '''
+        return "//h5[text()='星璨/Orion']/..//span[text()='立即购买']"
